@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Template • TodoMVC</title>
+	<link rel="stylesheet" href="../../../assets/base.css">
+	<!-- CSS overrides - remove if you don't need it -->
+	<link rel="stylesheet" href="css/app.css">
+	<!--[if IE]>
+	<script src="../../../assets/ie.js"></script>
+	<![endif]-->
+</head>
+<body data-cosy-import="todo" data-cosy-props="todos">
+	<section id="todoapp" data-cosy-class="Todo &@todos">
+		<header id="header">
+			<h1>todos</h1>
+			<input id="new-todo" placeholder="What needs to be done?" autofocus data-role="input">
+		</header>
+		<!-- This section should be hidden by default and shown when there are todos -->
+		<section id="main" data-role="todos">
+			<input id="toggle-all" type="checkbox" data-role="select-all">
+			<label for="toggle-all">Mark all as complete</label>
+			<ul id="todo-list" data-cosy-class="cosy.List &@todos">
+				<!-- These are here just to show the structure of the list items -->
+				<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+				<script type="text/mustache" data-id="item">
+					<li {{#complete}}class="completed" {{/complete}}data-cosy-class="TodoItem item @todos">
+						<div class="view" data-role="view">
+							<input class="toggle" type="checkbox" data-role="complete" {{#complete}}checked{{/complete}}>
+							<label>{{text}}</label>
+							<button class="destroy" data-role="destroy"></button>
+						</div>
+						<input class="edit" value="{{text}}" data-role="edit">
+					</li>
+				</script>
+			</ul>
+		</section>
+		<!-- This footer should hidden by default and shown when there are todos -->
+		<footer id="footer" data-role="todos">
+			<!-- This should be `0 items left` by default -->
+			<span id="todo-count"><strong><span data-role="num-left">0</span></strong> <span data-role="num-left-subject">items</span> left</span>
+			<!-- Remove this if you don't implement routing -->
+			<!--
+			<ul id="filters">
+				<li>
+					<a class="selected" href="#/">All</a>
+				</li>
+				<li>
+					<a href="#/active">Active</a>
+				</li>
+				<li>
+					<a href="#/completed">Completed</a>
+				</li>
+			</ul>
+			-->
+			<button id="clear-completed" data-role="clear-completed">
+				Clear completed (<span data-role="num-complete">0</span>)
+			</button>
+		</footer>
+	</section>
+	<footer id="info">
+		<p>Double-click to edit a todo</p>
+		<!-- Remove the below line ↓ -->
+		<p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
+		<!-- Change this out with your name and url ↓ -->
+		<p>Created by <a href="http://github.com/bahulneel">bahulneel</a></p>
+		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+	</footer>
+	<!-- Scripts here. Don't remove this ↓ -->
+	<script src="../../../assets/base.js"></script>
+	<script src="../../../assets/jquery.min.js"></script>
+	<script src="js/build/app.js"></script>
+</body>
+</html>
