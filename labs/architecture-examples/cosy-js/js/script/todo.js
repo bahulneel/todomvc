@@ -73,19 +73,12 @@
         };
 
         Todo.prototype.onClearAll = function (event) {
-            var list = this.control.get(this.todoList),
-                complete = [],
-                i, item;
-            for (i = 0; i < list.length; ++i) {
-                item = this.control.get(list[i]);
-                if (item.complete) {
-                    complete.push(item);
-                }
-            }
-            while(item = complete.pop()) {
-                list.remove(item);
-            }
+            var list = this.control.get(this.todoList);
+            list.remove(function (item) {
+                return item.complete;
+            });
         };
+
         return Todo;
     })();
 
